@@ -7,10 +7,9 @@ import bodyParser from "body-parser";
 const app = express();
 const PORT = 5000;
 
-
 mongoose.connect(
-    "mongodb://zzinsta:azertyuiop1@ds026558.mlab.com:26558/zzinsta",
-    { useNewUrlParser: true }
+    "mongodb://admin:admin6@ds026558.mlab.com:26558/zzinsta",
+    {useNewUrlParser: true}
 );
 mongoose.set('useCreateIndex', true);
 
