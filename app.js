@@ -3,13 +3,13 @@ import express from "express";
 import posts from "./routes/controllers/posts.js";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
+import { MONGO } from "./conf/env";
 
 const app = express();
 const PORT = 5000;
 
-
 mongoose.connect(
-    "mongodb://zzinsta:azertyuiop1@ds026558.mlab.com:26558/zzinsta",
+    MONGO,
     { useNewUrlParser: true }
 );
 mongoose.set('useCreateIndex', true);
@@ -32,4 +32,3 @@ db.once("open", function() {
         console.log(`server running on port ${PORT}`);
     });
 });
-
