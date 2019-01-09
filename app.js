@@ -2,14 +2,15 @@
 import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
+import { MONGO } from "./conf/env";
 import routes from './routes/routes';
 
 const app = express();
 const PORT = 5000;
 
 mongoose.connect(
-    "mongodb://admin:admin6@ds026558.mlab.com:26558/zzinsta",
-    {useNewUrlParser: true}
+    MONGO,
+    { useNewUrlParser: true }
 );
 mongoose.set('useCreateIndex', true);
 
@@ -28,4 +29,3 @@ db.once("open", function() {
         console.log(`server running on port ${PORT}`);
     });
 });
-
