@@ -2,7 +2,6 @@
 import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
-import { MONGO } from "./conf/env";
 import routes from './routes/routes';
 require('dotenv').config({ path: 'conf/.env' });
 
@@ -14,12 +13,6 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
-app.use("/api/v1/posts", posts);
 mongoose.connect(
     process.env.MONGO,
     { useNewUrlParser: true }
