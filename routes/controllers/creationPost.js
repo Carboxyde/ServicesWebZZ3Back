@@ -1,11 +1,6 @@
-import express from "express";
 import * as createPostsService from '../../db/models/creationService'
-import bodyParser from "body-parser";
 
-const app = express.Router();
-app.use(bodyParser.json());
-
-app.post("/post", (req, res) => {
+function createPost(req, res){
   createPostsService.createUser(req.body).then(
     app => res.status(200).json(app),
     err => {
@@ -14,6 +9,6 @@ app.post("/post", (req, res) => {
       return;
     }
   );
-});
+}
 
-module.exports = app;
+export default createPost;

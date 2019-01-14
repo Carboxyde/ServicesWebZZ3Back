@@ -1,4 +1,4 @@
-import Post from "./model";
+import Post from "./modelPosts";
 
 export async function getByPage(page, per_page) {
   var start = (parseInt(page) - 1) * parseInt(per_page);

@@ -1,4 +1,4 @@
-import Post from "./model";
+import Post from "./modelPosts";
 
 export async function createUser(post) {
   if (post) {
