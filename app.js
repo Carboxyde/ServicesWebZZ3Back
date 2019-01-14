@@ -1,6 +1,7 @@
 
 import express from "express";
-import posts from "./routes/controllers/posts.js";
+import posts from "./routes/controllers/getPosts.js";
+import create from "./routes/controllers/creationPost";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 
@@ -17,12 +18,11 @@ var db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function() {
 
-    const app = express();
-
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
 
-    app.use("/api/v1/posts", posts);
+    app.use("/api/v1/Post", posts);
+    app.use("/api/v1/Create", create)
     //app.use("/", Routes);
 
     const PORT = 5000;
