@@ -1,8 +1,9 @@
 import express from "express";
 import * as createPostsService from '../../db/models/creationService'
+import bodyParser from "body-parser";
 
 const app = express.Router();
-app.use(bodyParser.jason());
+app.use(bodyParser.json());
 
 app.post("/post", (req, res) => {
   createPostsService.createUser(req.body).then(
