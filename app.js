@@ -4,9 +4,15 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import { MONGO } from "./conf/env";
 import routes from './routes/routes';
+require('dotenv').config({ path: 'conf/.env' });
+
 
 const app = express();
-const PORT = 5000;
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -15,7 +21,7 @@ app.use(function(req, res, next) {
 });
 app.use("/api/v1/posts", posts);
 mongoose.connect(
-    MONGO,
+    process.env.MONGO,
     { useNewUrlParser: true }
 );
 mongoose.set('useCreateIndex', true);
@@ -29,9 +35,8 @@ db.once("open", function() {
 
     app.use("/", routes);
 
-    const PORT = 5000;
 
-    app.listen(PORT, () => {
-        console.log(`server running on port ${PORT}`);
+    app.listen(process.env.PORT, () => {
+        console.log(`server running on port ${process.env.PORT}`);
     });
 });
