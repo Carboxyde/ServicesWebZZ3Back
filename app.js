@@ -4,13 +4,14 @@ import posts from "./routes/controllers/getPosts.js";
 import create from "./routes/controllers/creationPost";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
-import { MONGO } from "./conf/env";
+require('dotenv').config({ path: 'conf/.env' });
+
 
 const app = express();
 const PORT = 5000;
 
 mongoose.connect(
-    MONGO,
+    process.env.MONGO,
     { useNewUrlParser: true }
 );
 mongoose.set('useCreateIndex', true);
