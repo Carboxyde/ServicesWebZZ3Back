@@ -1,6 +1,5 @@
 
 import express from "express";
-import db from '../../db/db';
 import * as postsService from '../../db/models/getService'
 
 const app = express();
@@ -10,9 +9,6 @@ app.get('/', (req, res) => {
       .getByPage(req.query.page || 1, req.query.per_page || 10)
       .then(users => res.status(200).json({ users }));
 
-    res.status(200).send({
-        posts:db
-    })
 });
 
 module.exports = app;
