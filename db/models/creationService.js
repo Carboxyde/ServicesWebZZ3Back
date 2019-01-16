@@ -1,6 +1,6 @@
 import Post from "./modelPosts";
 
-export async function createUser(post) {
+export async function createPost(post) {
   if (post) {
     if (!post._id) {
       console.log("[post] - Creation");

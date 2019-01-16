@@ -9,5 +9,3 @@ export async function getByPage(page, per_page) {
     .limit(parseInt(per_page));
   return result;
 };
-
-export default getByPage()
