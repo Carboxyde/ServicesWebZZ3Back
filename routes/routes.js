@@ -4,13 +4,13 @@ import getUsers from './controllers/getUsers'
 import createUsers from './controllers/creationUsers'
 import loginUser from './controllers/loginUser'
 import verifyJWT_MW from "../middleware/auth";
-import createJWTToken from "../libs/auth"
 import bodyParser from "body-parser"
 import express from "express"
+import allowCrossDomain from "../middleware/allowCrossDomain"
 
 const routes = express.Router();
 
-
+routes.use(allowCrossDomain)
 routes.use(bodyParser.json());
 routes.use(bodyParser.urlencoded({ extended: true }));
 
