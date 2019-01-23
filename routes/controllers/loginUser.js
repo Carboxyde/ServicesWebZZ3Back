@@ -1,22 +1,37 @@
 import {createJWTToken} from "../../libs/auth";
+import User from "../../db/models/modelUsers";
 
-function loginUser(req, res){
+const crypto = require('crypto');
+
+async function loginUser(req, res){
     let { username, password } = req.body;
-    console.log(username);
-    console.log(password);
-    if (username === "admin" && password === "Password1") {
-        res.status(200).json({
-            success: true,
-            token: createJWTToken({
-                sessionData: { name: username },
-                maxAge: 3600
-            })
-        });
-    } else {
-        res.status(401).json({
-            message: "Login ou mot de passe incorrecte."
-        });
+
+    try {
+        let userData = await User.findOne({mail: username});
+        var hashedPass = crypto.createHmac('sha256', password).digest('hex');
+
+        console.log(hashedPass);
+        console.log(userData.password);
+
+
+        if(hashedPass == userData.password){
+            res.status(200).json({
+                success: true,
+                token: createJWTToken({
+                    sessionData: { name: username },
+                    maxAge: 3600
+                })
+            });
+        }else {
+            res.status(401).json({
+                message: "Login ou mot de passe incorrecte."
+            });
+
+        }
+    } catch (e) {
+        console.log(e);
     }
+
 }
 
 export default loginUser;
