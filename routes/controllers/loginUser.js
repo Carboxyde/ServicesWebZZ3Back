@@ -19,6 +19,7 @@ async function loginUser(req, res){
                 username: userData.username,
                 success: true,
                 token: createJWTToken({
+                    idUser: userData.username,
                     sessionData: { name: username },
                     maxAge: 3600
                 })

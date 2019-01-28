@@ -6,6 +6,7 @@ var PostSchema = new Schema({
   title: String,
   description: String,
   img: String,
+  isPublic: Boolean
 }, {collection: 'Post'});
 
 PostSchema.index({ name: 1});
