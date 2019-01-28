@@ -1,14 +1,13 @@
 import * as createUserService from '../../db/models/createUsersService'
 
-function createUser(req, res){
-  createUserService.createUser(req.body).then(
-    app => res.status(200).json(app),
-    err => {
-      console.error(err);
+async function createUser(req, res){
+  var user = await createUserService.createUser(req.body).catch(
+    (err) => {
+      console.log(err);
       res.status(500).send("error");
-      return;
     }
   );
+  res.status(200).json(user);
 }
 
 export default createUser;

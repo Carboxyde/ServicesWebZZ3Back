@@ -16,6 +16,7 @@ async function loginUser(req, res){
 
         if(hashedPass == userData.password){
             res.status(200).json({
+                username: userData.username,
                 success: true,
                 token: createJWTToken({
                     sessionData: { name: username },
