@@ -7,8 +7,6 @@ function getPosts(req,res){
       app => {
         app.forEach(function (err, doc) {
           app[doc]['userId'] = req.user;
-          console.log(req);
-          console.log(app[doc]);
         });
 
         res.status(200).json({app});
