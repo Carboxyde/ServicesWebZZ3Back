@@ -4,10 +4,10 @@ import User from "../../db/models/modelUsers";
 const crypto = require('crypto');
 
 async function loginUser(req, res){
-    let { username, password } = req.body;
+    let { mail, password } = req.body;
 
     try {
-        let userData = await User.findOne({mail: username});
+        let userData = await User.findOne({mail: mail});
         var hashedPass = crypto.createHmac('sha256', password).digest('hex');
         console.log(userData);
 
@@ -20,7 +20,6 @@ async function loginUser(req, res){
                 user: userData._id,
                 token: createJWTToken({
                     user: userData._id,
-                    data: { name: username },
                     maxAge: 3600
                 })
             });
