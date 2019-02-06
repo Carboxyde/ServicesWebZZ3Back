@@ -10,11 +10,9 @@ async function loginUser(req, res){
         let userData = await User.findOne({mail: username});
         var hashedPass = crypto.createHmac('sha256', password).digest('hex');
 
-        console.log(hashedPass);
-        console.log(userData.password);
 
 
-        if(hashedPass == userData.password){
+        if(userData!=null && hashedPass == userData.password){
             res.status(200).json({
                 username: userData.username,
                 success: true,
@@ -27,7 +25,7 @@ async function loginUser(req, res){
             });
         }else {
             res.status(401).json({
-                message: "Login ou mot de passe incorrecte."
+                message: "Votre identifiant ou mot de passe est incorrect"
             });
 
         }
