@@ -6,7 +6,7 @@ export async function createPost(post) {
       console.log("[post] - Creation");
 
       return Post.create({title: post.title, description: post.description,
-        img: post.img});
+        img: post.img, userId : post.user});
     }
   }
 };

@@ -26,6 +26,7 @@ export function createJWTToken(details) {
     details.sessionData = _.reduce(
         details.sessionData || {},
         (memo, val, key) => {
+            console.log(val);
             if (typeof val !== "function" && key !== "password") {
                 memo[key] = val;
             }

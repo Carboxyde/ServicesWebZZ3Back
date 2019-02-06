@@ -4,7 +4,7 @@ function verifyJWT_MW(req, res, next) {
     let token = req.headers.authorization;
     verifyJWTToken(token)
         .then(decodedToken => {
-            req.user = decodedToken.data;
+            req.user = decodedToken.sessionData;
             next();
         })
         .catch(err => {
