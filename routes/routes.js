@@ -3,6 +3,7 @@ import createPosts from './controllers/creationPost'
 import getUsers from './controllers/getUsers'
 import createUsers from './controllers/creationUsers'
 import loginUser from './controllers/loginUser'
+import getPostsUsers from "./controllers/getPostByUser"
 import verifyJWT_MW from "../middleware/auth";
 import bodyParser from "body-parser"
 import express from "express"
@@ -23,5 +24,7 @@ routes.get('/users', getUsers);
 routes.post('/users', createUsers);
 
 routes.post("/login", loginUser);
+
+routes.get('/posts/user', getPostsUsers);
 
 export default routes;
