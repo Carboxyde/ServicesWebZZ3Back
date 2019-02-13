@@ -11,8 +11,6 @@ async function loginUser(req, res){
         var hashedPass = crypto.createHmac('sha256', password).digest('hex');
         console.log(userData);
 
-
-
         if(userData!=null && hashedPass == userData.password){
             res.status(200).json({
                 username: userData.username,
