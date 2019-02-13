@@ -5,6 +5,7 @@ import createUsers from './controllers/creationUsers'
 import loginUser from './controllers/loginUser'
 import getPostsUsers from "./controllers/getPostByUser"
 import verifyJWT_MW from "../middleware/auth";
+import deletePosts from "./controllers/deletePost"
 import bodyParser from "body-parser"
 import express from "express"
 import allowCrossDomain from "../middleware/allowCrossDomain"
@@ -26,5 +27,6 @@ routes.post('/users', createUsers);
 routes.post("/login", loginUser);
 
 routes.get('/posts/user', getPostsUsers);
+routes.post('/posts/delete', deletePosts);
 
 export default routes;
