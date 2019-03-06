@@ -21,17 +21,17 @@ routes.use(bodyParser.urlencoded({ extended: true }));
 routes.all('/posts', verifyJWT_MW);
 
 routes.get('/posts', getPosts);
-routes.post('/posts', createPosts);
+routes.put('/posts', createPosts);
 
 routes.get('/users', getUsers);
-routes.post('/users', createUsers);
+routes.put('/users', createUsers);
 
 routes.post("/login", loginUser);
 
 routes.get('/posts/user', getPostsUsers);
-routes.post('/posts/delete', deletePosts);
+routes.delete('/posts/delete', deletePosts);
 
 routes.get('/comment', getComments);
-routes.post('/comment', createComment);
+routes.put('/comment', createComment);
 
 export default routes;
