@@ -16,15 +16,18 @@
     "lodash": "^4.17.11"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.3.4",
+    "babel-preset-env": "^1.7.0",
     "body-parser": "^1.18.3",
     "jest": "^24.1.0",
+    "mockingoose": "^2.12.0",
     "mongodb-memory-server": "^3.1.2",
     "mongoose": "^5.4.0",
     "nodemon": "^1.18.9"
   },
   "scripts": {
     "start": "node_modules/.bin/nodemon app.js --exec babel-node --",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
